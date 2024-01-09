@@ -29,7 +29,7 @@ contract ERC721CloneFactory is MyERC721 {
         address clone = Clones.clone(implementationContract);
 
         // Delegatecall the encoded initializer function call on the clone
-        (bool initSuccess, ) = clone.delegatecall(
+        (bool initSuccess, ) = clone.call(
             abi.encodeWithSignature(
                 "initialize(string,string,address)",
                 name,

@@ -40,7 +40,7 @@ contract MyERC721 is Context, IERC165, IERC721, IERC721Metadata, Initializable {
     // Mapping from owner to operator approvals
     mapping(address => mapping(address => bool)) private _operatorApprovals;
 
-    function initialize(string memory name_, string memory symbol_, address initialOwner_) external onlyInitializing {
+    function initialize(string memory name_, string memory symbol_, address initialOwner_) external initializer {
         require(initialOwner_ == msg.sender, "Only owner can initialize");
         _name = name_;
         _symbol = symbol_;

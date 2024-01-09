@@ -1,9 +1,8 @@
 import { expect } from "chai";
-import { ethers, upgrades } from "hardhat";
+import { ethers } from "hardhat";
 import { ERC721CloneFactory } from "../typechain";
 import { MyERC721 } from "../typechain";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
-import { BigNumber } from "ethers";
 
 describe("ERC721CloneFactory", () => {
   let cloneFactory: ERC721CloneFactory;
@@ -29,7 +28,7 @@ describe("ERC721CloneFactory", () => {
         implementation.address,
         "CloneToken",
         "CT",
-        owner.address
+        cloneFactory.address
       );
 
       const filter = cloneFactory.filters.CloneCreated();
@@ -46,7 +45,7 @@ describe("ERC721CloneFactory", () => {
         implementation.address,
         "CloneToken",
         "CT",
-        owner.address
+        cloneFactory.address
       );
 
       const filter = cloneFactory.filters.CloneCreated();
@@ -61,7 +60,7 @@ describe("ERC721CloneFactory", () => {
         implementation.address,
         "CloneToken",
         "CT",
-        owner.address
+        cloneFactory.address
       );
 
       await expect(
